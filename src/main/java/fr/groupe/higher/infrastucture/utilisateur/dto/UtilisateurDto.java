@@ -3,7 +3,6 @@ package fr.groupe.higher.infrastucture.utilisateur.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.groupe.higher.infrastucture.utilisateur.model.RoleUtilisateur;
 import fr.groupe.higher.infrastucture.utilisateur.model.Utilisateur;
 import fr.groupe.higher.infrastucture.utilisateur.role.RoleDto;
 

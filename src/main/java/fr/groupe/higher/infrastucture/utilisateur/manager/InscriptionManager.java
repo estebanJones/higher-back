@@ -32,7 +32,7 @@ public class InscriptionManager {
 		Utilisateur utilisateur = this.utilisateurService.creerUtilisateur(dtoRequest);
 		Utilisateur utilisateurDataBase = this.utilisateurService.persist(utilisateur);
 		RoleUtilisateur roleUtilisateur = new RoleUtilisateur(utilisateurDataBase, ERole.ROLE_UTILISATEUR);
-		RoleUtilisateur roleUtilisateurDataBase = this.roleUtilisateurRepository.persist(roleUtilisateur);
+		this.roleUtilisateurRepository.persist(roleUtilisateur);
 		return new RegisterDtoResponse("Inscription réussie !");
 	}
 	

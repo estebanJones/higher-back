@@ -18,7 +18,9 @@ public class Utilisateur {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String email;
+	private String username;
 	private String password;
+	private String nationalite;
 	@OneToOne
 	@JoinColumn(name = "addresse_id", referencedColumnName = "id", nullable = true)
 	private Adresse adresse;
@@ -26,9 +28,11 @@ public class Utilisateur {
 	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.PERSIST)
 	private List<RoleUtilisateur> roles = new ArrayList<>();
 	
-	public Utilisateur(String email, String password) {
+	public Utilisateur(String email, String username, String password, String nationalite) {
 		this.email = email;
+		this.username = username;
 		this.password = password;
+		this.nationalite = nationalite;
 	}
 
 	public Utilisateur() {
@@ -73,5 +77,21 @@ public class Utilisateur {
 
 	public void setRoles(List<RoleUtilisateur> roles) {
 		this.roles = roles;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getNationalite() {
+		return nationalite;
+	}
+
+	public void setNationalite(String nationalite) {
+		this.nationalite = nationalite;
 	}
 }

@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import fr.groupe.higher.infrastucture.exceptions.UserException;
 import fr.groupe.higher.infrastucture.utilisateur.dao.UtilisateurDAO;
 import fr.groupe.higher.infrastucture.utilisateur.dto.RegisterDtoRequest;
 import fr.groupe.higher.infrastucture.utilisateur.model.Utilisateur;
@@ -18,7 +17,7 @@ public class UtilisateurService {
 	}
 	
 	public Utilisateur creerUtilisateur(RegisterDtoRequest dtoRequest) {
-		return new Utilisateur(dtoRequest.getEmail(), dtoRequest.getPassword());
+		return new Utilisateur(dtoRequest.getEmail(), dtoRequest.getUsername(), dtoRequest.getPassword(), dtoRequest.getNationalite());
 	}
 
 	public Utilisateur persist(Utilisateur utilisateur) {
