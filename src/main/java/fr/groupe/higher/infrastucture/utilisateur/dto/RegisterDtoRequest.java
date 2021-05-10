@@ -7,7 +7,6 @@ public class RegisterDtoRequest {
 	private String username;
 	
 	public RegisterDtoRequest(String email, String password, String nationalite, String username) {
-		super();
 		this.email = email;
 		this.password = password;
 		this.nationalite = nationalite;

@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import fr.groupe.higher.infrastucture.equipe.model.Equipe;
 
 @Entity
 public class Utilisateur {
@@ -20,6 +25,7 @@ public class Utilisateur {
 	private String email;
 	private String username;
 	private String password;
+	@Column(length = 50)
 	private String nationalite;
 	@OneToOne
 	@JoinColumn(name = "addresse_id", referencedColumnName = "id", nullable = true)
@@ -27,6 +33,12 @@ public class Utilisateur {
 	
 	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.PERSIST)
 	private List<RoleUtilisateur> roles = new ArrayList<>();
+	
+	@ManyToMany()
+	@JoinTable(name = "utilisateur_equipe", joinColumns = @JoinColumn(name="id_utilisateur", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name="id_equipe", referencedColumnName = "id")
+)
+	private List<Equipe> equipes = new ArrayList<>();
 	
 	public Utilisateur(String email, String username, String password, String nationalite) {
 		this.email = email;
