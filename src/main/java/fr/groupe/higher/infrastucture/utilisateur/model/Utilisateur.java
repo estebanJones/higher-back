@@ -22,11 +22,19 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(length = 30, nullable = false)
 	private String email;
+	
+	@Column(length = 30, nullable = false)
 	private String username;
+	
+	@Column(nullable = false)
 	private String password;
-	@Column(length = 50)
+	
+	@Column(length = 50, nullable = true)
 	private String nationalite;
+	
 	@OneToOne
 	@JoinColumn(name = "addresse_id", referencedColumnName = "id", nullable = true)
 	private Adresse adresse;
@@ -36,9 +44,10 @@ public class Utilisateur {
 	
 	@ManyToMany()
 	@JoinTable(name = "utilisateur_equipe", joinColumns = @JoinColumn(name="id_utilisateur", referencedColumnName = "id"),
-	inverseJoinColumns = @JoinColumn(name="id_equipe", referencedColumnName = "id")
-)
+				inverseJoinColumns = @JoinColumn(name="id_equipe", referencedColumnName = "id")
+			)
 	private List<Equipe> equipes = new ArrayList<>();
+	
 	
 	public Utilisateur(String email, String username, String password, String nationalite) {
 		this.email = email;

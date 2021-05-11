@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import  fr.groupe.higher.infrastucture.utilisateur.model.Utilisateur;
 
@@ -24,24 +26,29 @@ public class Equipe {
 	private Integer nbDefeat;
 	private LocalDateTime created_at;
 	
+	@OneToOne
+	private Utilisateur creator;
+	
+	@ManyToOne
+	@JoinColumn(name="capitaine_id")
+	private Utilisateur capitaine;
+	
 	@ManyToMany
 	@JoinTable(name = "utilisateur_equipe", joinColumns = @JoinColumn(name="id_equipe", referencedColumnName = "id"),
 				inverseJoinColumns = @JoinColumn(name="id_utilisateur", referencedColumnName = "id")
 			)
-	private List<Utilisateur> utilisateurs = new ArrayList<>();
+	private List<Utilisateur> membres = new ArrayList<>();
 	
 	public Equipe() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Equipe(String nom, Integer nbVictory, Integer nbDefeat, LocalDateTime created_at,
-			List<Utilisateur> utilisateurs) {
+	public Equipe(String nom) {
 		super();
 		this.nom = nom;
-		this.nbVictory = nbVictory;
-		this.nbDefeat = nbDefeat;
-		this.created_at = created_at;
-		this.utilisateurs = utilisateurs;
+		this.nbVictory = 0;
+		this.nbDefeat = 0;
+		this.created_at = LocalDateTime.now();
 	}
 
 	public String getNom() {
@@ -76,11 +83,41 @@ public class Equipe {
 		this.created_at = created_at;
 	}
 
-	public List<Utilisateur> getUtilisateurs() {
-		return utilisateurs;
+	public List<Utilisateur> getMembres() {
+		return membres;
 	}
 
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
+	public void setMembres(List<Utilisateur> membres) {
+		this.membres = membres;
 	}
+	
+	public void addMembre(Utilisateur utilisateur) {
+		this.membres.add(utilisateur);
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Utilisateur getCapitaine() {
+		return capitaine;
+	}
+
+	public void setCapitaine(Utilisateur capitaine) {
+		this.capitaine = capitaine;
+	}
+
+	public Utilisateur getCreator() {
+		return creator;
+	}
+
+	public void setCreator(Utilisateur creator) {
+		this.creator = creator;
+	}
+	
+	
 }
