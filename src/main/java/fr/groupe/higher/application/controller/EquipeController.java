@@ -16,14 +16,19 @@ import fr.groupe.higher.infrastucture.equipe.dto.DtoEquipe;
 import fr.groupe.higher.infrastucture.equipe.dto.DtoEquipeCreation;
 import fr.groupe.higher.infrastucture.equipe.model.Equipe;
 import fr.groupe.higher.infrastucture.equipe.repositories.EquipeService;
+import fr.groupe.higher.infrastucture.utilisateur.dto.DtoMembre;
+import fr.groupe.higher.infrastucture.utilisateur.model.Utilisateur;
+import fr.groupe.higher.infrastucture.utilisateur.service.UtilisateurService;
 
 @RestController
 @RequestMapping("/equipe")
 public class EquipeController {
 	private EquipeService equipeService;
+	private UtilisateurService utilisateurService;
 	
-	public EquipeController(EquipeService equipeService) {
+	public EquipeController(EquipeService equipeService, UtilisateurService utilisateurService) {
 		this.equipeService = equipeService;
+		this.utilisateurService = utilisateurService;
 	}
 	
 	
@@ -50,6 +55,12 @@ public class EquipeController {
 		List<DtoEquipe> dtoEquipes = equipes.stream().map(equipeDB -> new DtoEquipe(equipeDB)).collect(Collectors.toList());
 		return ResponseEntity.ok(dtoEquipes);
 	}
-	
-	
+
+	@GetMapping("/{idEquipe}/membres")
+	public ResponseEntity<?> listeMembresParEquipe(@PathVariable Integer idEquipe) {
+		List<Utilisateur> utilisateurs = this.utilisateurService.getUtilisateursByEquipe(idEquipe);
+		List<DtoMembre> dtoMembres = utilisateurs.stream().map(utilisateur -> new DtoMembre(utilisateur)).collect(Collectors.toList());
+		
+		return ResponseEntity.ok(dtoMembres);
+	}
 }

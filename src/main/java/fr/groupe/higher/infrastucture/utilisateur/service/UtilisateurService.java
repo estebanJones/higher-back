@@ -1,5 +1,6 @@
 package fr.groupe.higher.infrastucture.utilisateur.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -27,6 +28,11 @@ public class UtilisateurService {
 	public Utilisateur getUtilisateurByEmail(String email) {
 		Optional<Utilisateur> utilisateur = this.utilisateurDAO.findByEmail(email);
 		return utilisateur.orElseThrow();
+	}
+	
+	public List<Utilisateur> getUtilisateursByEquipe(Integer idEquipe){
+		Optional<List<Utilisateur>> membres = this.utilisateurDAO.findByEquipe(idEquipe);
+		return membres.orElseThrow();
 	}
 	
 }
