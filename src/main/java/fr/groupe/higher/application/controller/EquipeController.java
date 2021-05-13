@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.groupe.higher.infrastucture.dto.DtoResponseCreation;
 import fr.groupe.higher.infrastucture.equipe.dto.DtoEquipe;
 import fr.groupe.higher.infrastucture.equipe.dto.DtoEquipeCreation;
 import fr.groupe.higher.infrastucture.equipe.model.Equipe;
@@ -38,7 +39,7 @@ public class EquipeController {
 			} catch(Exception e) {
 				return ResponseEntity.ok(e.getMessage());
 			}
-			return ResponseEntity.ok("Votre equipe à été créée avec succès");
+			return ResponseEntity.ok(new DtoResponseCreation("Votre equipe à été créée avec succès"));
 		} else {
 			return ResponseEntity.badRequest().body("Une erreur est survenue lors de la validation du formulaire");
 		}
