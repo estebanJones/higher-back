@@ -44,7 +44,6 @@ public class Equipe {
 	}
 
 	public Equipe(String nom) {
-		super();
 		this.nom = nom;
 		this.nbVictory = 0;
 		this.nbDefeat = 0;

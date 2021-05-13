@@ -29,4 +29,9 @@ public class UtilisateurService {
 		return utilisateur.orElseThrow();
 	}
 	
+	public Optional<Utilisateur> findByEmail(String email) {
+		Optional<Utilisateur> utilisateur = this.utilisateurDAO.findByEmail(email);
+		return utilisateur;
+	}
+	
 }
