@@ -8,6 +8,7 @@ import fr.groupe.higher.infrastucture.equipe.model.Equipe;
 import fr.groupe.higher.infrastucture.utilisateur.dto.UtilisateurDto;
 
 public class DtoEquipe {
+	private Integer id;
 	private String nom;
 	private Integer nbVictory;
 	private Integer nbDefeat;
@@ -15,6 +16,7 @@ public class DtoEquipe {
 	List<UtilisateurDto> utilisateurDtoMembres = new ArrayList<>();
 	
 	public DtoEquipe(Equipe equipe) {
+		this.id = equipe.getId();
 		this.nom = equipe.getNom();
 		this.nbVictory = equipe.getNbVictory();
 		this.nbDefeat = equipe.getNbDefeat();
@@ -23,6 +25,14 @@ public class DtoEquipe {
 	}
 
 	public DtoEquipe() {
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNom() {
