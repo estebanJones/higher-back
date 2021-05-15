@@ -9,6 +9,7 @@ import fr.groupe.higher.infrastucture.utilisateur.dto.UtilisateurDto;
 
 public class DtoEquipe {
 	private Integer id;
+	private Integer idCapitaine;
 	private String nom;
 	private Integer nbVictory;
 	private Integer nbDefeat;
@@ -17,6 +18,7 @@ public class DtoEquipe {
 	
 	public DtoEquipe(Equipe equipe) {
 		this.id = equipe.getId();
+		this.idCapitaine = equipe.getCapitaine().getId();
 		this.nom = equipe.getNom();
 		this.nbVictory = equipe.getNbVictory();
 		this.nbDefeat = equipe.getNbDefeat();
@@ -33,6 +35,15 @@ public class DtoEquipe {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	
+	public Integer getIdCapitaine() {
+		return idCapitaine;
+	}
+
+	public void setIdCapitaine(Integer idCapitaine) {
+		this.idCapitaine = idCapitaine;
 	}
 
 	public String getNom() {

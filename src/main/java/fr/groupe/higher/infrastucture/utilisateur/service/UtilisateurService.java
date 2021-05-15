@@ -25,6 +25,10 @@ public class UtilisateurService {
 		return this.utilisateurDAO.save(utilisateur);
 	}
 	
+	public Utilisateur getUtilisateurById(Integer idUtilisateur) {
+		return this.utilisateurDAO.findById(idUtilisateur).orElseThrow();
+	}
+	
 	public Utilisateur getUtilisateurByEmail(String email) {
 		Optional<Utilisateur> utilisateur = this.utilisateurDAO.findByEmail(email);
 		return utilisateur.orElseThrow();

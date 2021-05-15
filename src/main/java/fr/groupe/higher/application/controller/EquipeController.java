@@ -64,4 +64,18 @@ public class EquipeController {
 		
 		return ResponseEntity.ok(dtoMembres);
 	}
+	
+//	@GetMapping("/modifier/capitaine/{equipeId}/{capitaineActuelId}/{nextCapitaineId}")
+//	public ResponseEntity<?> modifierCapitaine(@PathVariable Integer equipeId, @PathVariable Integer capitaineActuelId, @PathVariable Integer nextCapitaineId) {
+//		// recupere lequipe
+//		Equipe equipe = this.equipeService.findEquipeById(equipeId);
+//		// recuperer les deux utilisateurs
+//		Utilisateur capitaineActuel = this.utilisateurService.getUtilisateurById(capitaineActuelId);
+//		Utilisateur prochainCapitaine = this.utilisateurService.getUtilisateurById(nextCapitaineId);
+//		// modifier l ancien capitaine par le nouveau
+//		// CONDITION : si le capitaine est le seul membre de l'équipe il ne peut pas modifier le capitaine !
+//		// persister
+//	}
+	
+	
 }

@@ -5,7 +5,7 @@ import fr.groupe.higher.infrastucture.utilisateur.model.Utilisateur;
 public class DtoMembre {
     private Integer id;
 	private String nom;
-
+	private Integer idCapitain;
     public DtoMembre() {}
 
     public DtoMembre(Utilisateur util) {

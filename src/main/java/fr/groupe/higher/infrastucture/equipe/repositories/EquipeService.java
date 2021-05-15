@@ -52,6 +52,10 @@ public class EquipeService {
 		return this.equipeDAO.save(equipe);
 	}
 	
+	public Equipe findEquipeById(Integer id) {
+		return this.equipeDAO.findById(id).orElseThrow();
+	}
+	
 	private void setCapitaine(Equipe equipe, Utilisateur utilisateur) {
 		equipe.setCapitaine(utilisateur);
 	}
